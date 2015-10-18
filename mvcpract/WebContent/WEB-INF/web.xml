@@ -4,18 +4,18 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       
 						http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-	<display-name>Gigaspaces and restful demo</display-name>
+	<display-name>mvc practice</display-name>
 
-	<servlet>
-		<servlet-name>mvc-dispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>mvc-dispatcher</servlet-name> -->
+<!-- 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
 
-	<servlet-mapping>
-		<servlet-name>mvc-dispatcher</servlet-name>
-		<url-pattern>/tgsdemo/*</url-pattern>
-	</servlet-mapping>
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>mvc-dispatcher</servlet-name> -->
+<!-- 		<url-pattern>/tgsdemo/*</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 
 	<servlet>
 		<servlet-name>Jersey Web Application</servlet-name>
@@ -23,19 +23,19 @@
 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<init-param>
         <param-name>com.sun.jersey.config.property.packages</param-name>
-        <param-value>test.britttonn.gsdemo.jaxrs</param-value>
+        <param-value>test.brittonn.mvcpract.rest</param-value>
     	</init-param>
-    	    	<init-param>
-        	<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-        	<param-value>test.britttonn.gsdemo.jaxrs.GSDemoSecFilter</param-value>
-    	</init-param>
+<!--     	    	<init-param> -->
+<!--         	<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name> -->
+<!--         	<param-value>test.brittonn.mvcpract.jaxrs.HibPractSecFilter</param-value> -->
+<!--     	</init-param> -->
     	
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Jersey Web Application</servlet-name>
-		<url-pattern>/crunchify/*</url-pattern>
+		<url-pattern>/mvcpract/*</url-pattern>
 	</servlet-mapping>
 
 	<context-param>

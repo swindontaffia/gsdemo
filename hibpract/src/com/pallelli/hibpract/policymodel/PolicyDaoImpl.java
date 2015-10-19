@@ -1,22 +1,15 @@
-package test.brittonn.hibpract;
+package com.pallelli.hibpract.policymodel;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
-import test.brittonn.hibpract.model.Risk;
+import com.pallelli.hibpract.policymodel.beans.Risk;
 
-public class IFacesDao {
-	static private IFacesDao instance;
-	private IFacesDao() {
-		
-	}
+@Component
+public class PolicyDaoImpl implements PolicyDao {
 	
-	public static IFacesDao getInstance() {
-		if(instance == null) {
-			instance = new IFacesDao();
-		}
-		return instance;
-	}
 
+	@Override
 	public void addRisk(Risk risk) {
 		Session session = null;
 		try {

@@ -20,7 +20,7 @@
    <property name="hibernate.connection.password">
       Swindon123!!
    </property>
-   <mapping  class="test.brittonn.hibpract.model.Risk" /> 
+   <mapping  class="com.pallelli.hibpract.policymodel.beans.Risk" /> 
 
 </session-factory>
 </hibernate-configuration>

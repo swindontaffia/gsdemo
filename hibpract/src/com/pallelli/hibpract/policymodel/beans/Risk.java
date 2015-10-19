@@ -1,4 +1,4 @@
-package test.brittonn.hibpract.model;
+package com.pallelli.hibpract.policymodel.beans;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

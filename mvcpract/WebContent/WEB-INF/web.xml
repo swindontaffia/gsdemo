@@ -17,21 +17,29 @@
 <!-- 		<url-pattern>/tgsdemo/*</url-pattern> -->
 <!-- 	</servlet-mapping> -->
 
-	<servlet>
-		<servlet-name>Jersey Web Application</servlet-name>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>Jersey Web Application</servlet-name> -->
 		
-		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-		<init-param>
-        <param-name>com.sun.jersey.config.property.packages</param-name>
-        <param-value>test.brittonn.mvcpract.rest</param-value>
-    	</init-param>
-<!--     	    	<init-param> -->
-<!--         	<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name> -->
-<!--         	<param-value>test.brittonn.mvcpract.jaxrs.HibPractSecFilter</param-value> -->
+<!-- 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
+<!-- 		<init-param> -->
+<!--         <param-name>com.sun.jersey.config.property.packages</param-name> -->
+<!--         <param-value>com.pallelli.mvcpract.rest</param-value> -->
 <!--     	</init-param> -->
-    	
+<!-- 		<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
+	
+		<servlet>
+		<servlet-name>Jersey Web Application</servlet-name>
+		<servlet-class>
+			org.glassfish.jersey.servlet.ServletContainer
+		</servlet-class>
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.pallelli.mvcpract.PolicyApplication</param-value>			
+		</init-param>		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
 	
 	<servlet-mapping>
 		<servlet-name>Jersey Web Application</servlet-name>
@@ -40,7 +48,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>
 
 	<listener>

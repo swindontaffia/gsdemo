@@ -1,4 +1,4 @@
-package test.brittonn.hibpract;
+package com.pallelli.hibpract.policymodel;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

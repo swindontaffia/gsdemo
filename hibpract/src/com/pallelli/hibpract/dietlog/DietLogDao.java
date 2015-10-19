@@ -8,6 +8,12 @@ public interface DietLogDao {
 
 	void addFoodItem(FoodItem foodItem);
 
-	List<FoodItem> listFoodItems();
+	List<FoodItem> getAllFoodItems();
+
+	FoodItem getNamedFoodItem(String name);
+
+	void updateFoodItem(FoodItem foodItem);
+
+	void deleteFoodItem(String name);
 
 }

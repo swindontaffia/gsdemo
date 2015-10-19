@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.pallelli.hibpract.dietlog.Main;
 import com.pallelli.hibpract.dietlog.MyHibernateSessionFactory;
 import com.pallelli.hibpract.dietlog.beans.FoodItem;
 
@@ -53,7 +52,6 @@ public class FoodItemDaoTest {
 	@Before
 	public void setUp() throws Exception
 	{
-		//session = Main.getSessionFactory().openSession();
 		session = sessionFactory.openSession();
 	}
 

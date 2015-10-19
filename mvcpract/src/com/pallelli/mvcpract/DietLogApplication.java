@@ -5,7 +5,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.internal.JerseyResourceContext;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 
-import com.pallelli.mvcpract.rest.DietLoggerService;
+import com.pallelli.mvcpract.rest.DietLoggerFoodItemService;
 
 public class DietLogApplication extends ResourceConfig {
  
@@ -15,7 +15,7 @@ public class DietLogApplication extends ResourceConfig {
 	public DietLogApplication(){
         register(RequestContextFilter.class);
         register(JerseyResourceContext.class);
-        register(DietLoggerService.class);
+        register(DietLoggerFoodItemService.class);
         
         // Jackson JSON marshalling
         register(JacksonFeature.class);

@@ -38,7 +38,7 @@ public class DietLogDaoImpl implements DietLogDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<FoodItem> listFoodItems() {
+	public List<FoodItem> getAllFoodItems() {
 		Session session = null;
 		List<FoodItem> foodItems = Collections.emptyList();
 		try {
@@ -51,5 +51,49 @@ public class DietLogDaoImpl implements DietLogDao {
 		
 		return foodItems.stream().filter(Objects::nonNull).collect(Collectors.toCollection(ArrayList::new))
 				;
+	}
+
+	@Override
+	public FoodItem getNamedFoodItem(String name) {
+		Session session = null;
+		FoodItem foodItem = null;
+		try {
+			session = sessionFactory.openSession();
+			foodItem = (FoodItem)session.get(FoodItem.class, name); 
+		}
+		finally {
+			if(session != null) session.close();
+		}
+		
+		return foodItem;
+	}
+
+	@Override
+	public void updateFoodItem(FoodItem foodItem) {
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.update(foodItem);
+			session.getTransaction().commit();
+		}
+		finally {
+			if(session != null) session.close();
+		}
+	}
+
+	@Override
+	public void deleteFoodItem(String name) {
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			FoodItem foodItem = getNamedFoodItem(name);
+			session.beginTransaction();
+			session.delete(foodItem);
+			session.getTransaction().commit();
+		}
+		finally {
+			if(session != null) session.close();
+		}
 	}
 }

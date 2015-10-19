@@ -35,7 +35,7 @@
 		</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>com.pallelli.mvcpract.PolicyApplication</param-value>			
+			<param-value>com.pallelli.mvcpract.DietLogApplication</param-value>			
 		</init-param>		
 		<load-on-startup>1</load-on-startup>
 	</servlet>

@@ -12,7 +12,7 @@
    </property>
 
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost/insuref
+      jdbc:mysql://localhost/foodlog
    </property>
    <property name="hibernate.connection.username">
       root
@@ -20,7 +20,7 @@
    <property name="hibernate.connection.password">
       Swindon123!!
    </property>
-   <mapping  class="com.pallelli.hibpract.policymodel.beans.Risk" /> 
+   <mapping  class="com.pallelli.hibpract.dietlog.beans.FoodItem" /> 
 
 </session-factory>
 </hibernate-configuration>

@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<context:component-scan base-package="com.pallelli.mvcpract.rest" />
-	<context:component-scan base-package="com.pallelli.hibpract.policymodel" />
+	<context:component-scan base-package="com.pallelli.hibpract.dietlog" />
 
 	<mvc:annotation-driven />
 

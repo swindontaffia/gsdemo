@@ -1,17 +1,16 @@
-package com.pallelli.hibpract.policymodel;
+package com.pallelli.hibpract.dietlog;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.springframework.stereotype.Component;
 
-@Component
-public class MyHibernateSessionFactoryImpl implements MyHibernateSessionFactory {
-
-	static private SessionFactory sessionFactory = null;
+public class Main {
 	
-	@Override
-	public synchronized Session openSession() {
+	static private SessionFactory sessionFactory = null;
+	private Main(){};
+	public static void main(String[] args) {
+	}
+	
+	public static SessionFactory getSessionFactory() {
 		if(sessionFactory == null)
 		try {
 			// load from different directory
@@ -25,9 +24,7 @@ public class MyHibernateSessionFactoryImpl implements MyHibernateSessionFactory 
 			System.err.println("Initial SessionFactory creation failed." + ex);
 			throw new ExceptionInInitializerError(ex);
 		}
-		return sessionFactory.openSession();
-	
+		return sessionFactory;
 	}
-
 
 }

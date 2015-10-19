@@ -1,4 +1,4 @@
-package com.pallelli.hibpract.policymodel;
+package com.pallelli.hibpract.dietlog;
 
 import org.hibernate.Session;
 

@@ -70,6 +70,25 @@ public class FoodItemDaoTest {
 		read2();
 		delete();
 		read3();
+		equalTest();
+	}
+
+	private void equalTest() {
+		FoodItem foodItem = new FoodItem(FOOD_ITEM_NAME);
+		foodItem.setCarbs(CARBS);
+		foodItem.setFats(FATS);
+		foodItem.setProtein(PROTEIN);
+		foodItem.setSaturates(SATURATES);
+		foodItem.setSodium(SODIUM);
+		foodItem.setSugars(SUGARS);
+		foodItem.setFibre(FIBRE);
+		foodItem.setUnits(UNITS);
+		
+		FoodItem clone = (FoodItem)foodItem.clone();
+		assertFalse(clone == foodItem);
+		assertTrue(clone.equals(foodItem));
+		
+
 	}
 
 	private void create()

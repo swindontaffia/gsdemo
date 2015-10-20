@@ -3,6 +3,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name = "FoodItem")
 public class FoodItem implements Cloneable
@@ -153,7 +156,7 @@ public class FoodItem implements Cloneable
 		clone.name = name;
 		clone.units = units;
 		clone.carbs = carbs;
-		clone.sugars = clone.sugars;
+		clone.sugars = sugars;
 		clone.protein = protein;
 		clone.fats = fats;
 		clone.saturates = saturates;

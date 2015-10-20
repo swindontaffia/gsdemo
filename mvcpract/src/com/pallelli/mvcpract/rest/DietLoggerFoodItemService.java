@@ -54,7 +54,7 @@ public class DietLoggerFoodItemService {
 	@GET
 	@Path("getnamed")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response listFoodItems(@QueryParam("name") String name) {
+	public Response getFoodItem(@QueryParam("name") String name) {
 		
 		FoodItem foodItem = dietLogDao.getNamedFoodItem(name);
 		return Response.ok(foodItem).status(200).build();
@@ -76,7 +76,7 @@ public class DietLoggerFoodItemService {
 	public Response deleteFoodItems(@QueryParam("name") String name) {
 		
 		dietLogDao.deleteFoodItem(name);
-		return Response.ok("delete food item" + name).status(200).build();
+		return Response.ok("deleted food item " + name).status(200).build();
 	}
 	
 

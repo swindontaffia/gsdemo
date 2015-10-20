@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FoodItem")
-public class FoodItem
+public class FoodItem implements Cloneable
 {
 
 	private String name;
@@ -126,4 +126,43 @@ public class FoodItem
 	public void setEnergy(double energy) {
 		this.energy = energy;
 	}
+	
+	@Override
+	public boolean equals(Object otherFoodItemO) {
+		if(otherFoodItemO == null) return false;
+		if(!(otherFoodItemO instanceof FoodItem)) return false;
+		FoodItem otherFoodItem = (FoodItem)otherFoodItemO;
+		
+		return name.equals(otherFoodItem.name) &&
+				units.equals(otherFoodItem.units) &&
+				carbs == otherFoodItem.carbs &&
+				sugars == otherFoodItem.sugars &&
+				protein == otherFoodItem.protein &&
+				fats == otherFoodItem.fats &&
+				saturates == otherFoodItem.saturates &&
+				sodium == otherFoodItem.sodium &&
+				fibre == otherFoodItem.fibre &&
+				energy == otherFoodItem.energy;
+		
+	}
+	
+	@Override
+	public Object clone() {
+		FoodItem clone = new FoodItem();
+		
+		clone.name = name;
+		clone.units = units;
+		clone.carbs = carbs;
+		clone.sugars = clone.sugars;
+		clone.protein = protein;
+		clone.fats = fats;
+		clone.saturates = saturates;
+		clone.sodium = sodium;
+		clone.fibre = fibre;
+		clone.energy = energy;
+		
+		return clone;
+	}
+	
+	
 }

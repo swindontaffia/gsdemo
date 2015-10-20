@@ -73,7 +73,7 @@ public class DietLoggerFoodItemService {
 	@DELETE
 	@Path("delete")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteFoodItems(@QueryParam("name") String name) {
+	public Response deleteFoodItem(@QueryParam("name") String name) {
 		
 		dietLogDao.deleteFoodItem(name);
 		return Response.ok("deleted food item " + name).status(200).build();

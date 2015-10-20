@@ -26,7 +26,7 @@ public class FoodItemServiceTest {
 	private DietLoggerFoodItemService theService;
 	
 	@Autowired
-	private MockDietLogDao mockDietLogDao;
+	private MockDietLogDao mockDietLogDao; // The service will also be using this dao through an autowired DietLogDao instance.
 	
 	private FoodItem foodItem;
 	
@@ -40,11 +40,19 @@ public class FoodItemServiceTest {
 	public void tests() {
 		addFoodItem();
 		getFoodItem();
+		getFoodItem2();
 		getAllFoodItems();
 		updateFoodItem();
 		deleteFoodItem();
+		deleteAll();
 	}
 	
+	private void getFoodItem2() {
+		Response response = theService.getFoodItem("wrongname");
+		Object o = response.getEntity();
+		assertNull(o);
+	}
+
 	public void addFoodItem() {
 		theService.addFoodItem(foodItem);
 		assertTrue(mockDietLogDao.contains(foodItem));
@@ -73,13 +81,19 @@ public class FoodItemServiceTest {
 		assertFalse(foodItem.getUnits().equals(preUpdateFoodItem));
 		theService.updateFoodItems(foodItem);
 		assertTrue(mockDietLogDao.getNamedFoodItem(foodItem.getName()).getUnits().equals("u2"));
-		
 	}
 
 	private void deleteFoodItem() {
-		theService.deleteFoodItems(foodItem.getName());
+		theService.deleteFoodItem(foodItem.getName());
 		assertNull( mockDietLogDao.getNamedFoodItem(foodItem.getName()));
 	}
 
-
+	private void deleteAll() {
+		mockDietLogDao.getAllFoodItems().stream().forEach(fi -> theService.deleteFoodItem(fi.getName()));
+		Response response = theService.getAllFoodItems();
+		Object o = response.getEntity();
+		assertTrue( o instanceof List<?>);
+		assertTrue( ((List<?>)o).size() == 0);
+		
+	}
 }

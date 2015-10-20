@@ -28,7 +28,7 @@
 <!-- 		<load-on-startup>1</load-on-startup> -->
 <!-- 	</servlet> -->
 	
-		<servlet>
+	<servlet>
 		<servlet-name>Jersey Web Application</servlet-name>
 		<servlet-class>
 			org.glassfish.jersey.servlet.ServletContainer
@@ -36,7 +36,11 @@
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
 			<param-value>com.pallelli.mvcpract.DietLogApplication</param-value>			
-		</init-param>		
+		</init-param>	
+		    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.pallelli.mvcpract.rest</param-value>
+    </init-param>	
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	

@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MySecurityProviderImpl implements MySecurityProvider {
 
-	static final long SESSION_TIMEOUT = 5*60*1000;
+	private long sessionTimeout = 5*60*1000;
+	
 	private class SecurityDetails {
 		String userName;
 		Set<String> roles;
@@ -21,7 +22,7 @@ public class MySecurityProviderImpl implements MySecurityProvider {
 		SecurityDetails(String userName, String [] roles) {
 			this.userName = userName;
 			this.roles = new HashSet<String>(Arrays.asList(roles));
-			expiryTime = System.currentTimeMillis() + SESSION_TIMEOUT;
+			expiryTime = System.currentTimeMillis() + getSessionTimeout();
 		}
 	}
 
@@ -52,7 +53,15 @@ public class MySecurityProviderImpl implements MySecurityProvider {
 		
 		if(securityDetails.expiryTime < System.currentTimeMillis()) throw new SessionTimedOutException();
 		
-		securityDetails.expiryTime = System.currentTimeMillis() + SESSION_TIMEOUT;
+		securityDetails.expiryTime = System.currentTimeMillis() + getSessionTimeout();
+	}
+
+	private long getSessionTimeout() {
+		return sessionTimeout;
+	}
+
+	public void getSessionTimeout(long sessionTimeout) {
+		this.sessionTimeout = sessionTimeout;
 	}
 
 }

@@ -2,7 +2,6 @@ package com.pallelli.mvcpract.junit;
 
 import static org.junit.Assert.*;
 
-import javax.naming.TimeLimitExceededException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.pallelli.mvcpract.security.MySecurityProvider;
 import com.pallelli.mvcpract.security.MySecurityProviderImpl;
 import com.pallelli.mvcpract.security.SessionTimedOutException;
 import com.pallelli.mvcpract.security.UserNotAutenticatedException;

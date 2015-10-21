@@ -1,6 +1,6 @@
 package com.pallelli.mvcpract.security;
 
-public class LoginForm {
+public class LoginDetails {
 
 	private String name;
 	private String hashedPassword;

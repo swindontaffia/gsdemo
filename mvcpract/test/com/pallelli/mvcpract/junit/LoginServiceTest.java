@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.pallelli.mvcpract.security.LoginForm;
+import com.pallelli.mvcpract.security.LoginDetails;
 import com.pallelli.mvcpract.security.LoginService;
 
 
@@ -29,7 +29,7 @@ public class LoginServiceTest {
 	}
 
 	private void testBadUserName() {
-		LoginForm loginForm = new LoginForm();
+		LoginDetails loginForm = new LoginDetails();
 		loginForm.setName("admn");
 		loginForm.setPassword("HJKII");
 		Response response = theService.doLogin(loginForm);
@@ -38,7 +38,7 @@ public class LoginServiceTest {
 	}
 
 	private void testBadPassword() {
-		LoginForm loginForm = new LoginForm();
+		LoginDetails loginForm = new LoginDetails();
 		loginForm.setName("admin");
 		loginForm.setPassword("HJKI");
 		Response response = theService.doLogin(loginForm);
@@ -46,7 +46,7 @@ public class LoginServiceTest {
 	}
 
 	private void testLoginOK() {
-		LoginForm loginForm = new LoginForm();
+		LoginDetails loginForm = new LoginDetails();
 		loginForm.setName("admin");
 		loginForm.setPassword("HJKII");
 		Response response = theService.doLogin(loginForm);

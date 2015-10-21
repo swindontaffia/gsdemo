@@ -26,7 +26,7 @@ public class LoginService {
 	@AutorizationNotRequired
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response doLogin(LoginForm loginForm) {
+	public Response doLogin(LoginDetails loginForm) {
 		
 		String [] roles = {"*"};
 		String token;

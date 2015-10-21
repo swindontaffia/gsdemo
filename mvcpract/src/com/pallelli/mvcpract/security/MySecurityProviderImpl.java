@@ -1,7 +1,6 @@
 package com.pallelli.mvcpract.security;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

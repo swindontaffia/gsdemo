@@ -11,6 +11,7 @@
 
 	<context:component-scan base-package="com.pallelli.mvcpract.rest" />
 	<context:component-scan base-package="com.pallelli.hibpract.dietlog" />
+	<context:component-scan base-package="com.pallelli.mvcpract.security" />
 
 	<mvc:annotation-driven />
 

@@ -1,4 +1,4 @@
-package com.pallelli.mvcpract.rest;
+package com.pallelli.mvcpract.security;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
@@ -14,9 +14,7 @@ import javax.ws.rs.ext.Provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.pallelli.mvcpract.security.AutorizationNotRequired;
-import com.pallelli.mvcpract.security.SessionTimedOutException;
-import com.pallelli.mvcpract.security.UserNotAutenticatedException;
+import com.pallelli.mvcpract.rest.MySecurityProvider;
 
 @Provider
 public class AuthorizationRequestFilter implements ContainerRequestFilter {

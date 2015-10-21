@@ -1,4 +1,4 @@
-package com.pallelli.mvcpract.rest;
+package com.pallelli.mvcpract.security;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -12,9 +12,7 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.pallelli.mvcpract.security.AutorizationNotRequired;
-import com.pallelli.mvcpract.security.LoginForm;
-import com.pallelli.mvcpract.security.UserNotAutenticatedException;
+import com.pallelli.mvcpract.rest.MySecurityProvider;
 
 @Path("login")
 @Component

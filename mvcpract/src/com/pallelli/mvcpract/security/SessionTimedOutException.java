@@ -1,4 +1,4 @@
-package com.pallelli.mvcpract.rest;
+package com.pallelli.mvcpract.security;
 
 public class SessionTimedOutException extends Exception {
 

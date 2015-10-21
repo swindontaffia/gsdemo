@@ -1,5 +1,8 @@
 package com.pallelli.mvcpract.rest;
 
+import com.pallelli.mvcpract.security.SessionTimedOutException;
+import com.pallelli.mvcpract.security.UserNotAutenticatedException;
+
 public interface MySecurityProvider {
 	
 	static final String TOKEN_HEADER = "X-Auth-Token";

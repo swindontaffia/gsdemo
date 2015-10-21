@@ -12,6 +12,10 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.pallelli.mvcpract.security.AutorizationNotRequired;
+import com.pallelli.mvcpract.security.LoginForm;
+import com.pallelli.mvcpract.security.UserNotAutenticatedException;
+
 @Path("login")
 @Component
 

@@ -10,6 +10,9 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
+import com.pallelli.mvcpract.security.SessionTimedOutException;
+import com.pallelli.mvcpract.security.UserNotAutenticatedException;
+
 @Component
 public class MySecurityProviderImpl implements MySecurityProvider {
 

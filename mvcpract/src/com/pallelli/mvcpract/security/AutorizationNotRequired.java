@@ -1,4 +1,4 @@
-package com.pallelli.mvcpract.rest;
+package com.pallelli.mvcpract.security;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

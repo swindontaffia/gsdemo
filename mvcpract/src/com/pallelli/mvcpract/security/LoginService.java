@@ -12,8 +12,6 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.pallelli.mvcpract.rest.MySecurityProvider;
-
 @Path("login")
 @Component
 

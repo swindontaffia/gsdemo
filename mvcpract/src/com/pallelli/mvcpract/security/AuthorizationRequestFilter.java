@@ -14,8 +14,6 @@ import javax.ws.rs.ext.Provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.pallelli.mvcpract.rest.MySecurityProvider;
-
 @Provider
 public class AuthorizationRequestFilter implements ContainerRequestFilter {
 

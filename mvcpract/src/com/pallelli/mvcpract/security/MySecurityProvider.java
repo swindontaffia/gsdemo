@@ -1,7 +1,4 @@
-package com.pallelli.mvcpract.rest;
-
-import com.pallelli.mvcpract.security.SessionTimedOutException;
-import com.pallelli.mvcpract.security.UserNotAutenticatedException;
+package com.pallelli.mvcpract.security;
 
 public interface MySecurityProvider {
 	

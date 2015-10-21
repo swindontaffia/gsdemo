@@ -1,4 +1,4 @@
-package com.pallelli.mvcpract.rest;
+package com.pallelli.mvcpract.security;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,9 +9,6 @@ import java.util.Random;
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
-
-import com.pallelli.mvcpract.security.SessionTimedOutException;
-import com.pallelli.mvcpract.security.UserNotAutenticatedException;
 
 @Component
 public class MySecurityProviderImpl implements MySecurityProvider {

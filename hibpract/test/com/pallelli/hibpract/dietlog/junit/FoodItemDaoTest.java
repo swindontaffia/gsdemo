@@ -16,19 +16,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.pallelli.hibpract.dietlog.MyHibernateSessionFactory;
 import com.pallelli.hibpract.dietlog.beans.FoodItem;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/simple-job-launcher-context.xml" })
 
 public class FoodItemDaoTest {
 
-	
-	
 	@Autowired
 	private MyHibernateSessionFactory sessionFactory;
-	
+
 	private Session session;
-	
+
 	static private final String FOOD_ITEM_NAME = "Pitted Kalamata Olives";
 	static private final double CARBS = 0.5;
 	static private final double FATS = 21.4;
@@ -40,59 +37,34 @@ public class FoodItemDaoTest {
 	static private final String UNITS = "100g";
 
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
-	{
+	public static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterClass
-	public static void tearDownAfterClass() throws Exception
-	{
+	public static void tearDownAfterClass() throws Exception {
 	}
 
 	@Before
-	public void setUp() throws Exception
-	{
+	public void setUp() throws Exception {
 		session = sessionFactory.openSession();
 	}
 
 	@After
-	public void tearDown() throws Exception
-	{
+	public void tearDown() throws Exception {
 		session.close();
 	}
 
 	@Test
-	public void test()
-	{
+	public void test() {
 		create();
 		read();
 		update();
 		read2();
 		delete();
 		read3();
-		equalTest();
 	}
 
-	private void equalTest() {
-		FoodItem foodItem = new FoodItem(FOOD_ITEM_NAME);
-		foodItem.setCarbs(CARBS);
-		foodItem.setFats(FATS);
-		foodItem.setProtein(PROTEIN);
-		foodItem.setSaturates(SATURATES);
-		foodItem.setSodium(SODIUM);
-		foodItem.setSugars(SUGARS);
-		foodItem.setFibre(FIBRE);
-		foodItem.setUnits(UNITS);
-		
-		FoodItem clone = (FoodItem)foodItem.clone();
-		assertFalse(clone == foodItem);
-		assertTrue(clone.equals(foodItem));
-		
-
-	}
-
-	private void create()
-	{
+	private void create() {
 		session.beginTransaction();
 		FoodItem foodItem = new FoodItem(FOOD_ITEM_NAME);
 		foodItem.setCarbs(CARBS);
@@ -107,10 +79,8 @@ public class FoodItemDaoTest {
 		session.getTransaction().commit();
 	}
 
-	private void read()
-	{
-		FoodItem foodItem = (FoodItem) session
-				.get(FoodItem.class, FOOD_ITEM_NAME);
+	private void read() {
+		FoodItem foodItem = (FoodItem) session.get(FoodItem.class, FOOD_ITEM_NAME);
 		assertTrue(foodItem.getCarbs() == CARBS);
 		assertTrue(foodItem.getFats() == FATS);
 		assertTrue(foodItem.getProtein() == PROTEIN);
@@ -121,19 +91,15 @@ public class FoodItemDaoTest {
 		assertTrue(foodItem.getUnits().equals(UNITS));
 	}
 
-	private void update()
-	{
+	private void update() {
 		session.beginTransaction();
-		FoodItem foodItem = (FoodItem) session
-				.get(FoodItem.class, FOOD_ITEM_NAME);
+		FoodItem foodItem = (FoodItem) session.get(FoodItem.class, FOOD_ITEM_NAME);
 		foodItem.setProtein(PROTEIN * 2);
 		session.getTransaction().commit();
 	}
 
-	private void read2()
-	{
-		FoodItem foodItem = (FoodItem) session
-				.get(FoodItem.class, FOOD_ITEM_NAME);
+	private void read2() {
+		FoodItem foodItem = (FoodItem) session.get(FoodItem.class, FOOD_ITEM_NAME);
 		assertTrue(foodItem.getCarbs() == CARBS);
 		assertTrue(foodItem.getFats() == FATS);
 		assertTrue(foodItem.getProtein() == PROTEIN * 2);
@@ -144,20 +110,16 @@ public class FoodItemDaoTest {
 		assertTrue(foodItem.getUnits().equals(UNITS));
 	}
 
-	private void delete()
-	{
-		FoodItem foodItem = (FoodItem) session
-				.get(FoodItem.class, FOOD_ITEM_NAME);
+	private void delete() {
+		FoodItem foodItem = (FoodItem) session.get(FoodItem.class, FOOD_ITEM_NAME);
 		session.beginTransaction();
 		session.delete(foodItem);
 		session.getTransaction().commit();
 
 	}
 
-	private void read3()
-	{
-		FoodItem foodItem = (FoodItem) session
-				.get(FoodItem.class, FOOD_ITEM_NAME);
+	private void read3() {
+		FoodItem foodItem = (FoodItem) session.get(FoodItem.class, FOOD_ITEM_NAME);
 		assertTrue(foodItem == null);
 	}
 

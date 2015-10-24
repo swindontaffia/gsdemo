@@ -1,4 +1,5 @@
 package com.pallelli.hibpract.dietlog.beans;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,8 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name = "FoodItem")
-public class FoodItem implements Cloneable
-{
+public class FoodItem implements Cloneable {
 
 	private String name;
 	private String units;
@@ -22,103 +22,83 @@ public class FoodItem implements Cloneable
 	private double fibre;
 	private double energy;
 
-	public FoodItem(String name)
-	{
+	public FoodItem(String name) {
 		this.name = name;
 	}
 
-	public FoodItem()
-	{
+	public FoodItem() {
 	}
 
 	@Id
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getUnits()
-	{
+	public String getUnits() {
 		return units;
 	}
 
-	public void setUnits(String units)
-	{
+	public void setUnits(String units) {
 		this.units = units;
 	}
 
-	public double getCarbs()
-	{
+	public double getCarbs() {
 		return carbs;
 	}
 
-	public void setCarbs(double carbs)
-	{
+	public void setCarbs(double carbs) {
 		this.carbs = carbs;
 	}
 
-	public double getSugars()
-	{
+	public double getSugars() {
 		return sugars;
 	}
 
-	public void setSugars(double sugars)
-	{
+	public void setSugars(double sugars) {
 		this.sugars = sugars;
 	}
 
-	public double getProtein()
-	{
+	public double getProtein() {
 		return protein;
 	}
 
-	public void setProtein(double protein)
-	{
+	public void setProtein(double protein) {
 		this.protein = protein;
 	}
 
-	public double getFats()
-	{
+	public double getFats() {
 		return fats;
 	}
 
-	public void setFats(double fats)
-	{
+	public void setFats(double fats) {
 		this.fats = fats;
 	}
 
-	public double getSaturates()
-	{
+	public double getSaturates() {
 		return saturates;
 	}
 
-	public void setSaturates(double saturates)
-	{
+	public void setSaturates(double saturates) {
 		this.saturates = saturates;
 	}
 
-	public double getSodium()
-	{
+	public double getSodium() {
 		return sodium;
 	}
 
-	public void setSodium(double sodium)
-	{
+	public void setSodium(double sodium) {
 		this.sodium = sodium;
 	}
 
-	public void setFibre(double fibre)
-	{
+	public void setFibre(double fibre) {
 		this.fibre = fibre;
 	}
-	
-	public double getFibre()
-	{
+
+	public double getFibre() {
 		return fibre;
 	}
 
@@ -129,30 +109,26 @@ public class FoodItem implements Cloneable
 	public void setEnergy(double energy) {
 		this.energy = energy;
 	}
-	
+
 	@Override
 	public boolean equals(Object otherFoodItemO) {
-		if(otherFoodItemO == null) return false;
-		if(!(otherFoodItemO instanceof FoodItem)) return false;
-		FoodItem otherFoodItem = (FoodItem)otherFoodItemO;
-		
-		return name.equals(otherFoodItem.name) &&
-				units.equals(otherFoodItem.units) &&
-				carbs == otherFoodItem.carbs &&
-				sugars == otherFoodItem.sugars &&
-				protein == otherFoodItem.protein &&
-				fats == otherFoodItem.fats &&
-				saturates == otherFoodItem.saturates &&
-				sodium == otherFoodItem.sodium &&
-				fibre == otherFoodItem.fibre &&
-				energy == otherFoodItem.energy;
-		
+		if (otherFoodItemO == null)
+			return false;
+		if (!(otherFoodItemO instanceof FoodItem))
+			return false;
+		FoodItem otherFoodItem = (FoodItem) otherFoodItemO;
+
+		return name.equals(otherFoodItem.name) && units.equals(otherFoodItem.units) && carbs == otherFoodItem.carbs
+				&& sugars == otherFoodItem.sugars && protein == otherFoodItem.protein && fats == otherFoodItem.fats
+				&& saturates == otherFoodItem.saturates && sodium == otherFoodItem.sodium
+				&& fibre == otherFoodItem.fibre && energy == otherFoodItem.energy;
+
 	}
-	
+
 	@Override
 	public Object clone() {
 		FoodItem clone = new FoodItem();
-		
+
 		clone.name = name;
 		clone.units = units;
 		clone.carbs = carbs;
@@ -163,9 +139,8 @@ public class FoodItem implements Cloneable
 		clone.sodium = sodium;
 		clone.fibre = fibre;
 		clone.energy = energy;
-		
+
 		return clone;
 	}
-	
-	
+
 }

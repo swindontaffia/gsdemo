@@ -4,8 +4,11 @@
 </head>
 <body>
 
+	<table>
+	<tr><td>
 	<h1>Food Items</h1>
- 
+ 	</td></tr>
+ 	<tr><td>
  	<table border="2">
  	<tr>
  	<th>Name</th><th>Units</th><th>Carbs</th>
@@ -21,6 +24,16 @@
 		<td>${foodItem.energy}</td>
 	</tr>
 	</c:forEach>
+ 	</table>
+ 	</td>
+ 	</tr>
+ 	<tr>
+ 	<td align="right" >
+ 	<form action="/mcvpract/dlmvc/showAddFoodItemForm" >
+ 		<input type="submit" value="Add" >
+ 	</form>
+ 	</td>
+ 	</tr>
  	</table>
  
 </body>

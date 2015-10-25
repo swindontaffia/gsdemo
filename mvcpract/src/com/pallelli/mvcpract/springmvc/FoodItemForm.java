@@ -21,6 +21,7 @@ public class FoodItemForm {
 	private String energy;
 	private boolean isDirty = false;
 	private String error = "";
+	private boolean isUpdate = false;
 
 	public String getName() {
 		return name;
@@ -181,4 +182,13 @@ public class FoodItemForm {
 	public String getError() {
 		return error;
 	}
+
+	public void setIsUpdate() {
+		this.isUpdate  = true;
+	}
+
+	public boolean getIsUpdate() {
+		return isUpdate;
+	}
+
 }

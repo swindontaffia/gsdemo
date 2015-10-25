@@ -13,9 +13,10 @@
 <table>
 	<tr><td>Add Food Item</td></tr>
 	<c:if test="${not empty foodItemForm.error}"><tr><td style="color:red">${foodItemForm.error}</td></tr></c:if>
-	<tr><td><form:form method="post" action="/mcvpract/dlmvc/addFoodItem">
+	<tr><td>
+		<form:form method="post" action="/mcvpract/dlmvc/updateFoodItem">
 		<table>
-			<tr><td>Name</td><td><input name="name" type="text" value="${foodItemForm.name}"/></td><td style="color:red"><c:if test="${foodItemForm.nameNotSupplied}">Not Supplied</c:if></td></tr>
+			<tr><td>Name</td><td>${foodItemForm.name}<input name="name" type="hidden" value="${foodItemForm.name}"/></td><td style="color:red"><c:if test="${foodItemForm.nameNotSupplied}">Not Supplied</c:if></td></tr>
 			<tr><td>Units</td><td><input name="units" type="text" value="${foodItemForm.units}"  /></td><td style="color:red"><c:if test="${foodItemForm.unitsNotSupplied}">Not Supplied</c:if></td><tr>
 			<tr><td>Carbs</td><td><input name="carbs" type="number" step="0.01" value="${foodItemForm.carbs}" /></td><td style="color:red"><c:if test="${foodItemForm.carbsNotSupplied}">Not Supplied</c:if></td><tr>
 			<tr><td>Sugars</td><td><input name="sugars" type="number" step="0.01" value="${foodItemForm.sugars}"  /></td><td style="color:red"><c:if test="${foodItemForm.sugarsNotSupplied}">Not Supplied</c:if></td><tr>
@@ -25,7 +26,7 @@
 			<tr><td>Fibre</td><td><input name="fibre" type="number" step="0.01" value="${foodItemForm.fibre}" /></td><td style="color:red"><c:if test="${foodItemForm.fibreNotSupplied}">Not Supplied</c:if></td><tr>
 			<tr><td>Sodium</td><td><input name="sodium" type="number" step="0.01" value="${foodItemForm.sodium}" /></td><td style="color:red"><c:if test="${foodItemForm.sodiumNotSupplied}">Not Supplied</c:if></td><tr>
 			<tr><td>Energy</td><td><input name="energy" type="number" step="0.01" value="${foodItemForm.energy}" /></td><td style="color:red"><c:if test="${foodItemForm.energyNotSupplied}">Not Supplied</c:if></td><tr>
-			<tr><td></td><td align="right"><input type="submit" value="Add"  ></td></tr>
+			<tr><td></td><td align="right"><input type="submit"	value="Update"/></td></tr>
 		</table>
 		</form:form >
 	</td></tr>

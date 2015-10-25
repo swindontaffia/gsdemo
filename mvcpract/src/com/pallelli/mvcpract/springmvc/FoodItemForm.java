@@ -2,6 +2,11 @@ package com.pallelli.mvcpract.springmvc;
 
 import com.pallelli.hibpract.dietlog.beans.FoodItem;
 
+/**
+ * @author Neil Britton
+ *
+ */
+
 public class FoodItemForm {
 
 	private String name;

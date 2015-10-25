@@ -13,6 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pallelli.hibpract.dietlog.DietLogDao;
 import com.pallelli.hibpract.dietlog.beans.FoodItem;
 
+/**
+ * @author Neil Britton
+ *
+ */
 @Controller
 @RequestMapping("/")
 public class FoodItemController {

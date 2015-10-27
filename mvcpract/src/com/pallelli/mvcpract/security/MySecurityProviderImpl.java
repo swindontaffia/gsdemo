@@ -7,11 +7,16 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MySecurityProviderImpl implements MySecurityProvider {
 
+	private Logger log = Logger.getLogger(MySecurityProviderImpl.class);
+	
+	private static final int ALWAYS_KEEP_SIZE = 1000;
+	
 	private long sessionTimeout = 5*60*1000;
 	
 	private class SecurityDetails {
@@ -32,14 +37,45 @@ public class MySecurityProviderImpl implements MySecurityProvider {
 
 	@Override
 	public String autheticate(String user, String hashedPassword, String[] requestedUserRoles) throws UserNotAutenticatedException {
-		if(!(user.equals("admin") && hashedPassword.equals("HJKII"))) {
+		if(!("admin".equals(user) && "NCB".equals(hashedPassword))) {
 			throw new UserNotAutenticatedException();
 		}
 		
 		String token = Long.valueOf(random.nextLong()).toString();
-		securityDetailsMap.put(token, new SecurityDetails(user, requestedUserRoles));
+		log.debug("User autheticated - token : " + token);
 		
+		securityDetailsMap.put(token, new SecurityDetails(user, requestedUserRoles));
+		if(securityDetailsMap.size() > ALWAYS_KEEP_SIZE) {
+			shrinkSecurityDetailsMap();
+		}
 		return token;
+	}
+
+	private void shrinkSecurityDetailsMap() {
+		
+		long now = System.currentTimeMillis();
+		int currentMapSize = securityDetailsMap.size();
+		log.debug("securityDetailsMap has " + currentMapSize);
+		
+		
+		securityDetailsMap.keySet().stream()
+				.sorted((t1,t2)->compareSecurityDetialsTimeout(t1,t2)).skip(ALWAYS_KEEP_SIZE/2) // keep the newest x entries
+				.filter(x->securityDetailsMap.get(x).expiryTime < now) // keep those that have timeout
+				.forEach(x->removeSecurityDetail(x)); 
+		
+		log.debug("securityDetailsMap has been reduced by " + (currentMapSize-securityDetailsMap.size()));
+	}
+	
+	private int compareSecurityDetialsTimeout(String t1, String t2) {
+		int x = securityDetailsMap.get(t1).expiryTime > securityDetailsMap.get(t2).expiryTime ? -1 : 
+			securityDetailsMap.get(t1).expiryTime < securityDetailsMap.get(t2).expiryTime ? 1 : 0;
+					
+		return x;
+	}
+
+	private void removeSecurityDetail(String token) {
+		log.debug("Removing token " + token);
+		securityDetailsMap.remove(token);
 	}
 
 	@Override

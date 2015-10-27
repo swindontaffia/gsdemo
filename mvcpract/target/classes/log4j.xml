@@ -9,10 +9,12 @@
 		  value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
 	    </layout>
 	</appender>
-
+	<loggers>
 	<root>
 		<level value="DEBUG" />
 		<appender-ref ref="console" />
 	</root>
+	</loggers>
+	
 
 </log4j:configuration>

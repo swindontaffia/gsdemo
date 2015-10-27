@@ -25,4 +25,12 @@
 		</property>
 	</bean>
 	
+	 <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*" />
+            <bean class="com.pallelli.mvcpract.springmvc.LoggedInInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+ 
+	
 </beans>

@@ -96,7 +96,7 @@ public class MySecurityProviderImpl implements MySecurityProvider {
 		return sessionTimeout;
 	}
 
-	public void getSessionTimeout(long sessionTimeout) {
+	public void setSessionTimeout(long sessionTimeout) {
 		this.sessionTimeout = sessionTimeout;
 	}
 

@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.pallelli.mvcpract.security.MySecurityProvider;
 import com.pallelli.mvcpract.security.MySecurityProviderImpl;
 import com.pallelli.mvcpract.security.SessionTimedOutException;
 import com.pallelli.mvcpract.security.UserNotAutenticatedException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/junitTestsAppContext.xml" })
+@ContextConfiguration(locations = { "/securityProviderTestsAppContext.xml" })
 
 
 public class MySecurityProviderTest {
@@ -69,7 +70,8 @@ public class MySecurityProviderTest {
 	private void testCheckGoodToken() {
 		String [] roles = { "*" };
 		String token;
-		securityProvider.getSessionTimeout(5000L);
+		securityProvider.setSessionTimeout(5000);
+		
 		try {
 			token = securityProvider.autheticate("admin", "NCB", roles  );
 		} catch (UserNotAutenticatedException e) {
@@ -123,7 +125,7 @@ public class MySecurityProviderTest {
 
 	private void testTimeout() {
 		String [] roles = { "*" };
-		securityProvider.getSessionTimeout(500L);
+		securityProvider.setSessionTimeout(500L);
 		String token;
 		try {
 			token = securityProvider.autheticate("admin", "NCB", roles  );

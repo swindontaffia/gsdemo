@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.pallelli.mvcpract.mock.MockMySecurityProvider;
 import com.pallelli.mvcpract.security.LoginDetails;
 import com.pallelli.mvcpract.security.LoginService;
+import com.pallelli.mvcpract.security.MySecurityProvider;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/junitTestsAppContext.xml" })
+@ContextConfiguration(locations = { "/loginServiceTestsAppContext.xml" })
 
 public class LoginServiceTest {
 
@@ -30,8 +32,8 @@ public class LoginServiceTest {
 
 	private void testBadUserName() {
 		LoginDetails loginForm = new LoginDetails();
-		loginForm.setName("admn");
-		loginForm.setPassword("NCB");
+		loginForm.setName(MockMySecurityProvider.INVALID_USER);
+		loginForm.setPassword(MockMySecurityProvider.VALID_PASSWORD);
 		Response response = theService.doLogin(loginForm);
 		assertTrue(response.getStatus() == 401);
 		
@@ -39,18 +41,20 @@ public class LoginServiceTest {
 
 	private void testBadPassword() {
 		LoginDetails loginForm = new LoginDetails();
-		loginForm.setName("admin");
-		loginForm.setPassword("HJKI");
+		loginForm.setName(MockMySecurityProvider.VALID_USER);
+		loginForm.setPassword(MockMySecurityProvider.INVALID_PASSWORD);
 		Response response = theService.doLogin(loginForm);
 		assertTrue(response.getStatus() == 401);
 	}
 
 	private void testLoginOK() {
 		LoginDetails loginForm = new LoginDetails();
-		loginForm.setName("admin");
-		loginForm.setPassword("NCB");
+		loginForm.setName(MockMySecurityProvider.VALID_USER);
+		loginForm.setPassword(MockMySecurityProvider.VALID_PASSWORD);
 		Response response = theService.doLogin(loginForm);
 		assertTrue(response.getStatus() == 200);
+		assertTrue(MockMySecurityProvider.VALID_TOKEN.equals(response.getHeaderString(MySecurityProvider.TOKEN_HEADER)));
+		assertTrue(MockMySecurityProvider.VALID_USER.equals(response.getHeaderString(MySecurityProvider.USER_HEADER)));
 	}
 
 }

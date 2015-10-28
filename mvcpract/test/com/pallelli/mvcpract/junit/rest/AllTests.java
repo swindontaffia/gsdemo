@@ -1,4 +1,4 @@
-package com.pallelli.mvcpract.junit;
+package com.pallelli.mvcpract.junit.rest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

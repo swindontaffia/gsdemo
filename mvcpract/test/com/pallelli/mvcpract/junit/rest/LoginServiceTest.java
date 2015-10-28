@@ -1,4 +1,4 @@
-package com.pallelli.mvcpract.junit;
+package com.pallelli.mvcpract.junit.rest;
 
 import static org.junit.Assert.*;
 import javax.ws.rs.core.Response;

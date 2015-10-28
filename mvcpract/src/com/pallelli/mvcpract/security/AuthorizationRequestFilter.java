@@ -32,16 +32,14 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 			return;
 
 		try {
-			MultivaluedMap<String, String> headers = requestContext.getHeaders();
-			List<String> tokens = headers.get(MySecurityProvider.TOKEN_HEADER);
-			List<String> users = headers.get(MySecurityProvider.USER_HEADER);
-			if (tokens == null || tokens.size() == 0 || users == null || users.size() == 0) {
+
+			String token = requestContext.getHeaderString(MySecurityProvider.TOKEN_HEADER);
+			String user = requestContext.getHeaderString(MySecurityProvider.USER_HEADER);
+			
+			if (token == null || token.trim().length() == 0 || user == null || user.trim().length() == 0) {
 				throw new UserNotAutenticatedException();
 			}
-
-			String user = users.get(0);
-			String token = tokens.get(0);
-
+			
 			String role =  "*" ;
 			securityProvider.checkSecurityToken(user, token, role);
 			return;
@@ -52,5 +50,10 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 			requestContext.abortWith(Response.status(Response.Status.REQUEST_TIMEOUT).entity("Session timed out").build());
 		}
 
+	}
+	
+	// Needed for junit test
+	public void setResourceInfo(ResourceInfo resourceInfo) {
+		this.resourceInfo = resourceInfo;
 	}
 }

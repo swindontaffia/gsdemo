@@ -14,7 +14,7 @@ import com.pallelli.mvcpract.security.LoginService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/junit-app-context.xml" })
+@ContextConfiguration(locations = { "/junitTestsAppContext.xml" })
 
 public class LoginServiceTest {
 
@@ -31,7 +31,7 @@ public class LoginServiceTest {
 	private void testBadUserName() {
 		LoginDetails loginForm = new LoginDetails();
 		loginForm.setName("admn");
-		loginForm.setPassword("HJKII");
+		loginForm.setPassword("NCB");
 		Response response = theService.doLogin(loginForm);
 		assertTrue(response.getStatus() == 401);
 		
@@ -48,7 +48,7 @@ public class LoginServiceTest {
 	private void testLoginOK() {
 		LoginDetails loginForm = new LoginDetails();
 		loginForm.setName("admin");
-		loginForm.setPassword("HJKII");
+		loginForm.setPassword("NCB");
 		Response response = theService.doLogin(loginForm);
 		assertTrue(response.getStatus() == 200);
 	}

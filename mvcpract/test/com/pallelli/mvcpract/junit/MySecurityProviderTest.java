@@ -14,7 +14,7 @@ import com.pallelli.mvcpract.security.SessionTimedOutException;
 import com.pallelli.mvcpract.security.UserNotAutenticatedException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/junit-app-context.xml" })
+@ContextConfiguration(locations = { "/junitTestsAppContext.xml" })
 
 
 public class MySecurityProviderTest {
@@ -37,7 +37,7 @@ public class MySecurityProviderTest {
 	private void testGoodLogin() {
 		String [] roles = { "*" };
 		try {
-			securityProvider.autheticate("admin", "HJKII", roles  );
+			securityProvider.autheticate("admin", "NCB", roles  );
 		} catch (UserNotAutenticatedException e) {
 			 fail();
 		}
@@ -58,7 +58,7 @@ public class MySecurityProviderTest {
 	private void testBaddUserName() {
 		String [] roles = { "*" };
 		try {
-			securityProvider.autheticate("admn", "HJKII", roles  );
+			securityProvider.autheticate("admn", "NCB", roles  );
 		} catch (UserNotAutenticatedException e) {
 			return; // passed
 		}
@@ -71,7 +71,7 @@ public class MySecurityProviderTest {
 		String token;
 		securityProvider.getSessionTimeout(5000L);
 		try {
-			token = securityProvider.autheticate("admin", "HJKII", roles  );
+			token = securityProvider.autheticate("admin", "NCB", roles  );
 		} catch (UserNotAutenticatedException e) {
 			 fail();
 			 return;
@@ -104,7 +104,7 @@ public class MySecurityProviderTest {
 		String [] roles = { "*" };
 		String token;
 		try {
-			token = securityProvider.autheticate("admin", "HJKII", roles  );
+			token = securityProvider.autheticate("admin", "NCB", roles  );
 		} catch (UserNotAutenticatedException e) {
 			 fail();
 			 return;
@@ -126,7 +126,7 @@ public class MySecurityProviderTest {
 		securityProvider.getSessionTimeout(500L);
 		String token;
 		try {
-			token = securityProvider.autheticate("admin", "HJKII", roles  );
+			token = securityProvider.autheticate("admin", "NCB", roles  );
 		} catch (UserNotAutenticatedException e) {
 			 fail();
 			 return;

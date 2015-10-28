@@ -18,7 +18,7 @@ import com.pallelli.mvcpract.mock.MockDietLogDao;
 import com.pallelli.mvcpract.rest.DietLoggerFoodItemService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/junit-app-context.xml" })
+@ContextConfiguration(locations = { "/junitTestsAppContext.xml" })
 
 public class FoodItemServiceTest {
 

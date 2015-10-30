@@ -5,6 +5,11 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.internal.JerseyResourceContext;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 
+/**
+ * Class used to initialise the jax-rs library for the restful web-services api
+ * @author N Britton
+ *
+ */
 public class DietLogApplication extends ResourceConfig {
 
 	/**

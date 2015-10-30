@@ -3,7 +3,7 @@ package com.pallelli.mvcpract.security;
 public class LoginDetails {
 
 	private String name;
-	private String hashedPassword;
+	private String password;
 	public String getName() {
 		return name;
 	}
@@ -11,10 +11,10 @@ public class LoginDetails {
 		this.name = name;
 	}
 	public String getPassword() {
-		return hashedPassword;
+		return password;
 	}
 	public void setPassword(String password) {
-		this.hashedPassword = hash(password);
+		this.password = hash(password);
 	}
 	private String hash(String password) {
 		// TODO hash password

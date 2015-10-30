@@ -17,9 +17,9 @@ public class MockMySecurityProvider implements MySecurityProvider {
 	static public final String INVALID_TOKEN = "invalidtoken";
 	
 	@Override
-	public String autheticate(String user, String hashedPassword, String[] requestedUserRoles)
+	public String autheticate(String user, String password, String[] requestedUserRoles)
 			throws UserNotAutenticatedException {
-		if(! (VALID_USER.equals(user) && VALID_PASSWORD.equals(hashedPassword))) {
+		if(! (VALID_USER.equals(user) && VALID_PASSWORD.equals(password))) {
 			throw new UserNotAutenticatedException();
 		}
 		

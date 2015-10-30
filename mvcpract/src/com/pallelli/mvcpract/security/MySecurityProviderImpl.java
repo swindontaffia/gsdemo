@@ -8,11 +8,18 @@ import java.util.Random;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.pallelli.hibpract.dietlog.UserDetailsDao;
+import com.pallelli.hibpract.dietlog.beans.UserDetails;
 
 @Component
 public class MySecurityProviderImpl implements MySecurityProvider {
 
+	@Autowired
+	private UserDetailsDao userDetailsDao;
+	
 	private Logger log = Logger.getLogger(MySecurityProviderImpl.class);
 	
 	private static final int ALWAYS_KEEP_SIZE = 1000;
@@ -36,8 +43,18 @@ public class MySecurityProviderImpl implements MySecurityProvider {
 	private Random random = new Random(System.currentTimeMillis());
 
 	@Override
-	public String autheticate(String user, String hashedPassword, String[] requestedUserRoles) throws UserNotAutenticatedException {
-		if(!("admin".equals(user) && "NCB".equals(hashedPassword))) {
+	public String autheticate(String user, String password, String[] requestedUserRoles) throws UserNotAutenticatedException {
+		
+		UserDetails userDetails = userDetailsDao.getUserDetails(user);
+		if(userDetails == null) {
+			throw new UserNotAutenticatedException();
+		}
+		
+		try {
+			if(PasswordHash.validatePassword(password, userDetails.getPwhash()) == false) {
+				throw new UserNotAutenticatedException();
+			}
+		} catch (Exception e) {
 			throw new UserNotAutenticatedException();
 		}
 		

@@ -21,6 +21,7 @@
       Swindon123!!
    </property>
    <mapping  class="com.pallelli.hibpract.dietlog.beans.FoodItem" /> 
+   <mapping  class="com.pallelli.hibpract.dietlog.beans.UserDetails" /> 
 
 </session-factory>
 </hibernate-configuration>

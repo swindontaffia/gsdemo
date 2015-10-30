@@ -9,12 +9,12 @@ public interface MySecurityProvider {
 	 * Authenticate the user and return a security token if the user has been authenticated.   
 	 * 
 	 * @param user
-	 * @param hashedPassword
+	 * @param password
 	 * @param requestedUserRoles
 	 * 
 	 * @return a security token
 	 */
-	String autheticate(String user, String hashedPassword, String [] requestedUserRoles) throws UserNotAutenticatedException;
+	String autheticate(String user, String password, String [] requestedUserRoles) throws UserNotAutenticatedException;
 	void checkSecurityToken(String user, String token, String role) throws UserNotAutenticatedException, SessionTimedOutException;
 
 }
